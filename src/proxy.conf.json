@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://dev.apigw.pencarian.me",
+    "secure": true,
+    "logLevel": "debug",
+    "timeout": 10000,
+    "changeOrigin": true
+  }
+}
