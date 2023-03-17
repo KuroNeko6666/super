@@ -1,7 +1,7 @@
 export class MENU_DATA {
   public data = [
     {
-      name: 'Dasbor',
+      name: 'Dashboard',
       path: '/home/dashboard',
       icon: 'fa-solid fa-table-columns',
       collapse: true,
