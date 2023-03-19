@@ -1,10 +1,10 @@
-<div class="flex flex-col h-fit" *ngIf="!isLoading && !formMode">
+<div class="flex flex-col h-fit mt" *ngIf="!isLoading && !formMode">
   <div class="flex flex-col h-fit">
     <div class="flex flex-col p-3" [ngClass]="theme.config.mode.text">
       <span class="text-2xl font-bold">Manajemen Pengguna</span>
       <span class="text-sm font-light">{{ currentPath }}</span>
     </div>
-    <div class="p-3 rounded-lg flex flex-col overflow-x-scroll md:overflow-clip gap-y-3"
+    <div class="p-3 rounded-lg flex flex-col overflow-x-scroll md:overflow-clip gap-y-3 mb-20"
       [ngClass]="theme.config.mode.bg">
       <div class="flex flex-row items-center">
         <span class="flex-1 font-bold">Tabel Pengguna</span>
@@ -17,13 +17,14 @@
           </button>
         </div>
       </div>
-      <table class="h-fit text-sm min-w-96 table-fixed">
+      <table class="h-fit text-sm min-w-96 table-fixed ">
         <thead [ngClass]="theme.data.mode == 'dark' ? theme.config.color.bg_700: theme.config.color.bg_300">
           <tr class="text-left">
             <th class="p-2">No</th>
             <th class="p-2">Nama</th>
             <th class="p-2">Username</th>
             <th class="p-2">Email</th>
+            <th class="p-2">Verifikasi</th>
             <th class="p-2">Status</th>
              <th class="p-2 text-center w-36 max-h-20">Aksi</th>
           </tr>
@@ -47,6 +48,15 @@
               <td class="p-2">
                 <p class="max-h-20 text-ellipsis overflow-clip">
                   {{ item.email_verify? 'aktif' : 'nonaktif' }}
+                </p>
+              </td>
+              <td class="p-2">
+                <p class="max-h-20 text-ellipsis overflow-clip p-3">
+                  {{ item.enabled? 'aktif' : 'nonaktif' }}
+                  <!-- <label [for]="'default-toggle' + i" class="inline-flex relative items-center cursor-pointer">
+                    <input type="checkbox" [value]="" [id]="'default-toggle' + i" class="sr-only peer" [checked]="item.enabled">
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                  </label> -->
                 </p>
               </td>
               <td class="p-2">

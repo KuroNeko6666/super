@@ -159,6 +159,8 @@ export class UserMasterComponent {
     this.subcription = this.apiService.getAllUser().subscribe({
       next: (res) => {
         if (res.message == 'Success') {
+          console.log(res.data);
+
           this.rawData = res.data as KeycloakModel[]
           this.paginateData = this.paginate(this.rawData)
           this.data = this.paginateData[this.page]
