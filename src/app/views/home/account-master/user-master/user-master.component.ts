@@ -160,8 +160,7 @@ export class UserMasterComponent {
       next: (res) => {
         if (res.message == 'Success') {
           this.rawData = res.data as KeycloakModel[]
-          this.paginateData = this.paginate(this.rawData)
-          this.data = this.paginateData[this.page]
+          this.search(this.searchForm.value || "")
         }else if(res.message == "Token is expired"){
           this.apiService.logout()
         }
