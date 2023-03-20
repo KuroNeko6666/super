@@ -170,24 +170,32 @@ export class DashboardComponent {
     .then((res) => {
       if(res.message == "Success"){
         this.accounts = res.data as UserModel[]
+      } else if(res.message == "Token is expired"){
+        this.api.logout()
       }
     })
     await lastValueFrom(this.api.getAllUser())
     .then((res) => {
       if(res.message == "Success"){
         this.users = res.data as KeycloakModel[]
+      }else if(res.message == "Token is expired"){
+        this.api.logout()
       }
     })
     await lastValueFrom(this.api.getAllOperator())
     .then((res) => {
       if(res.message == "Success"){
         this.operators = res.data as UserModel[]
+      }else if(res.message == "Token is expired"){
+        this.api.logout()
       }
     })
     await lastValueFrom(this.api.getAllAdmin())
     .then((res) => {
       if(res.message == "Success"){
         this.admins = res.data as UserModel[]
+      }else if(res.message == "Token is expired"){
+        this.api.logout()
       }
     })
 
@@ -195,6 +203,8 @@ export class DashboardComponent {
     .then((res) => {
       if(res.message == "Success"){
         this.news = res.data as NewsModel[]
+      }else if(res.message == "Token is expired"){
+        this.api.logout()
       }
     })
 
@@ -202,6 +212,8 @@ export class DashboardComponent {
     .then((res) => {
       if(res.message == "Success"){
         this.activity = res.data as ActivityModel[]
+      }else if(res.message == "Token is expired"){
+        this.api.logout()
       }
     })
 

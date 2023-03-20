@@ -132,7 +132,9 @@ export class ActivityMasterComponent {
 
            this.paginateData = this.paginate(this.rawData)
            this.data = this.paginateData[this.page]
-         }
+         }else if(res.message == "Token is expired"){
+          this.apiService.logout()
+        }
        },
        error: (err) => {
          this.isLoading = false

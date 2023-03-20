@@ -15,7 +15,7 @@ export class KeycloakModel {
   public lastname?: string
   public email?: string
   public email_verify?: boolean
-  public enabled?: boolean
+  public account_status?: boolean
   public created_at?: string
   public avatar?: Avatar
 

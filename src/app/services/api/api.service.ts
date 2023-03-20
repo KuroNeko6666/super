@@ -12,6 +12,7 @@ import { UserInterface } from 'src/app/data/interfaces/user-interface';
 import { ResponseModel } from 'src/app/data/models/response/response-model.model';
 import { API_CONFIG } from './api.config';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -187,6 +188,14 @@ export class ApiService {
     let formData = new FormData()
     formData.append('avatar', data)
     return this.http.put<ResponseModel>((this.url.keycloak.change_avatar + id), formData, {headers: this.headers})
+  }
+
+  bannedUser(id:number): Observable<ResponseModel>{
+    return this.http.put<ResponseModel>(`/api/v1/backoffice/superuser/user_banned/`+ id,{}, {headers: this.headers})
+  }
+
+  unBannedUser(id:number): Observable<ResponseModel>{
+    return this.http.put<ResponseModel>(`/api/v1/backoffice/superuser/user_unbanned/` + id, {}, {headers: this.headers})
   }
 
 }

@@ -33,6 +33,8 @@
     "create": "/api/v1/backoffice/auth_users/register",
     "delete": "/api/v1/backoffice/users/delete/",
     "update": "/api/v1/backoffice/users/update/",
-    "change_avatar": "/api/v1/backoffice/users/change_avatar/"
+    "ban": "/api/v1/backoffice/superuser/user_unbanned/",
+    "change_avatar": "/api/v1/backoffice/users/change_avatar/",
+    "unban": "/api/v1/backoffice/superuser/user_banned/"
   }
 }

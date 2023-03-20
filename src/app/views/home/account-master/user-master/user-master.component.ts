@@ -159,11 +159,11 @@ export class UserMasterComponent {
     this.subcription = this.apiService.getAllUser().subscribe({
       next: (res) => {
         if (res.message == 'Success') {
-          console.log(res.data);
-
           this.rawData = res.data as KeycloakModel[]
           this.paginateData = this.paginate(this.rawData)
           this.data = this.paginateData[this.page]
+        }else if(res.message == "Token is expired"){
+          this.apiService.logout()
         }
       },
       error: (err) => {
@@ -393,6 +393,40 @@ export class UserMasterComponent {
       this.snackbar.open("Aksi Gagal dijalankan", "oke",{
         duration: 5000,
         panelClass: 'app-notification-error',
+      })
+    }
+  }
+
+  bannedToggle(val : boolean, id:number) {
+    if(val) {
+      this.apiService.bannedUser(id).subscribe({
+        next:(res) => {
+          if(res.message == "Success"){
+            this.getData()
+            this.openSnackBar(true)
+          } else if (res.data == "Missing Authorization"){
+            this.openSnackBar(false)
+          }
+        },
+        error: (err) => {
+          this.openSnackBar(false)
+          this.getData()
+        },
+      })
+    } else {
+      this.apiService.unBannedUser(id).subscribe({
+        next:(res) => {
+          if(res.message == "Success"){
+            this.getData()
+            this.openSnackBar(true)
+          } else if (res.data == "Missing Authorization"){
+            this.openSnackBar(false)
+          }
+        },
+        error: (err) => {
+          this.openSnackBar(false)
+          this.getData()
+        },
       })
     }
   }
