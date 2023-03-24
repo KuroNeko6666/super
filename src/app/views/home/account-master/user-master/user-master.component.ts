@@ -284,10 +284,10 @@ export class UserMasterComponent {
     }
   }
 
-  deleteItem(id: number): void {
+  deleteItem(email: string): void {
     this.dialog.open(DeleteComponent, {data:  this.theme.config.mode.bg}).afterClosed().subscribe((res) =>{
       if(res){
-       this.deleteSubs = this.apiService.deleteUser(id)
+       this.deleteSubs = this.apiService.deleteUser(email)
        .subscribe({
         next: (res) => {
           if (res.message == 'Success') {

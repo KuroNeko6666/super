@@ -180,8 +180,8 @@ export class ApiService {
     return this.http.put<ResponseModel>((this.url.keycloak.update + id), data, {headers: this.headers})
   }
 
-  deleteUser(id: number): Observable<ResponseModel>{
-    return this.http.delete<ResponseModel>((this.url.keycloak.delete + id), {headers: this.headers})
+  deleteUser(email: string): Observable<ResponseModel>{
+    return this.http.delete<ResponseModel>((this.url.keycloak.delete + "?email=" + email), {headers: this.headers})
   }
 
   updateAvatarUser(data: Blob, id:number): Observable<ResponseModel>{
